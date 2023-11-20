@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/background"
+    android:gravity="center_horizontal"
+    tools:viewBindingIgnore="true"
+    tools:context=".MusicPlayer">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:text="@string/i_want_it_that_way"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tvArtist"
+        android:text="BACKSTREET BOYS"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/icon_music_player"
+        android:contentDescription="TODO" />
+    <SeekBar
+        android:id="@+id/seekBarTime"
+        android:layout_marginTop="30dp"
+        android:layout_width="300dp"
+        android:progress="40"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/white"
+        android:thumbTint="@color/white"
+        android:backgroundTint="@color/white"/>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00 : 00"
+            android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/tvDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00 : 00"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_play"
+        android:contentDescription="Play button"/>
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_volume_down"
+            android:contentDescription="TODO" />
+
+        <SeekBar
+            android:id="@+id/seekBarVolume"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:progress="40"
+            android:progressTint="@color/white"
+            android:thumbTint="@color/white" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_volume_up"
+            android:contentDescription="TODO" />
+    </LinearLayout>
+</LinearLayout>
