@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
@@ -29,8 +30,7 @@ class MusicPlayer : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        supportActionBar?.hide()
         val song: Songs? = intent.getParcelableExtra("song")
 
         tvTime = findViewById(R.id.tvTime)
@@ -60,13 +60,21 @@ class MusicPlayer : AppCompatActivity(), View.OnClickListener {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-            musicPlayer.isLooping = true
-            musicPlayer.seekTo(0)
-            musicPlayer.setVolume(0.5f, 0.5f)
+        musicPlayer.isLooping = true
+        musicPlayer.seekTo(0)
+        musicPlayer.setVolume(0.5f, 0.5f)
 
-            val duration = millisecondsToString(musicPlayer.duration)
-            tvDuration.text = duration
-            btnPlay.setOnClickListener(this@MusicPlayer)
+        val backButton: ImageButton = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
+            if (musicPlayer.isPlaying) {
+                musicPlayer.stop()
+            }
+            finish() // Kết thúc Activity khi nút trở lại được bấm
+        }
+
+        val duration = millisecondsToString(musicPlayer.duration)
+        tvDuration.text = duration
+        btnPlay.setOnClickListener(this@MusicPlayer)
 
         seekBarVolume.progress = 50
         seekBarVolume.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -145,6 +153,16 @@ class MusicPlayer : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        // Xử lý khi nút back trên thiết bị được bấm
+        if (musicPlayer.isPlaying) {
+            musicPlayer.stop()
+        }
+        finish()
+        super.onBackPressed()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
